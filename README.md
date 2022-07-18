@@ -1,1 +1,3 @@
-# tweetwatermark
+# Tweet Watermark
+Tweet Watermarkは、画像にアカウント名の透かしを入れて投稿することができる、画像付きTweet投稿サービスです。
+画像合成アプリを使って透かしを入れた画像をダウンロードせずにTwitterへ画像を投稿できる機能が特徴です。
