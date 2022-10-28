@@ -63,5 +63,6 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'html2slim'
+gem 'net-smtp', require: false
 gem 'slim-rails'
 gem 'tailwindcss-rails', '~> 2.0'
