@@ -1,6 +1,11 @@
 {
   "name": "watermarkme",
   "private": true,
+  "scripts": {
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint 'app/javascript/**/*.{js,vue}' --max-warnings=0",
+    "lint:prettier": "prettier 'app/javascript/**/*.{js,vue}' --check"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -12,6 +17,13 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-vue": "^9.7.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "prettier-config-standard": "^5.0.0",
     "webpack-dev-server": "^3"
   }
 }
