@@ -68,5 +68,6 @@ gem 'html2slim'
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp', require: false
+gem 'omniauth-twitter'
 gem 'slim-rails'
 gem 'tailwindcss-rails', '~> 2.0'
