@@ -1,3 +1,8 @@
 div
   h1.font-bold.text-4xl
     | WaterMark Me
+  = link_to '/auth/twitter', method: :post
+    | ログイン
+  - if session[:nickname]
+    p
+      | #{session[:nickname]}さん、こんにちは
