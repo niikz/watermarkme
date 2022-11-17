@@ -1,8 +1,12 @@
 div
   h1.font-bold.text-4xl
     | WaterMark Me
-  = link_to '/auth/twitter', method: :post
-    | ログイン
-  - if session[:nickname]
+  - if logged_in?
     p
-      | #{session[:nickname]}さん、こんにちは
+      | #{current_user.twitter_name}@#{current_user.twitter_id}さん、こんにちは
+  - else
+    = link_to '/auth/twitter', method: :post
+      | ログイン
+  - if flash[:notice]
+    p.my-4
+      = flash[:notice]
