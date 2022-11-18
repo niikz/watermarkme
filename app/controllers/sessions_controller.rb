@@ -12,6 +12,11 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    log_out if logged_in?
+    redirect_to root_path, notice: 'ログアウトしました'
+  end
+
   def failure
     redirect_to root_path, notice: 'キャンセルしました'
   end

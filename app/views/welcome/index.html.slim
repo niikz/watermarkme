@@ -2,6 +2,8 @@ div
   h1.font-bold.text-4xl
     | WaterMark Me
   - if logged_in?
+    = link_to logout_path
+      | ログアウト
     p
       | #{current_user.twitter_name}@#{current_user.twitter_id}さん、こんにちは
   - else
