@@ -12,4 +12,19 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  module OmniauthTwitterHepler
+    def twitter_login_setup!
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+                                                                     'provider' => 'twitter',
+                                                                     'uid' => '123456',
+                                                                     'info' => {
+                                                                       'nickname' => 'OmniAuth Twitter',
+                                                                       'name' => 'OmniAuth Twitter Hepler',
+                                                                       'image' => 'http://example.com'
+                                                                     }
+                                                                   })
+      Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
+    end
+  end
 end
