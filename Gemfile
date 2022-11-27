@@ -33,6 +33,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -67,5 +68,8 @@ gem 'html2slim'
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp', require: false
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-twitter'
 gem 'slim-rails'
 gem 'tailwindcss-rails', '~> 2.0'
