@@ -8,16 +8,16 @@ class SessionsTest < ApplicationSystemTestCase
   test 'login using twitter' do
     twitter_login_setup!
     visit root_url
-    assert_selector 'h1', text: 'WaterMark Me'
     click_on 'ログイン'
-    assert_text 'ログインしました'
+    visit tweets_url
+    assert_text 'OmniAuth Twitterさん、こんにちは'
   end
 
   test 'logout' do
     twitter_login_setup!
     visit root_url
     click_on 'ログイン'
-    assert_text 'ログインしました'
+    visit tweets_url
     click_on 'ログアウト'
     assert_text 'ログアウトしました'
   end
