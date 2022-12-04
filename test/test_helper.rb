@@ -22,6 +22,10 @@ class ActiveSupport::TestCase
                                                                        'nickname' => 'OmniAuth Twitter',
                                                                        'name' => 'OmniAuth Twitter Hepler',
                                                                        'image' => 'http://example.com'
+                                                                     },
+                                                                     'credentials' => {
+                                                                       'token' => 'test_token',
+                                                                       'secret' => 'test_token_secret'
                                                                      }
                                                                    })
       Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
