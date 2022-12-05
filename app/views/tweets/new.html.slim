@@ -7,3 +7,6 @@ div
     | 画像を投稿する
   div
     == render 'form'
+  - if flash[:notice]
+    p.my-4
+      = flash[:notice]
