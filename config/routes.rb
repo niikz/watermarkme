@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   get '/', to: 'welcome#index', as: 'welcome'
-  resources :tweets, only: %i(new)
+  resources :tweets, only: %i(new create)
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'

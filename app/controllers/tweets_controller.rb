@@ -5,6 +5,8 @@ class TweetsController < ApplicationController
 
   def new; end
 
+  def create; end
+
   private
 
   def twitter_client
