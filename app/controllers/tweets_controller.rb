@@ -3,11 +3,14 @@
 class TweetsController < ApplicationController
   before_action :require_login
 
-  def new; end
+  def new
+    @tweet = TweetForm.new
+  end
 
   def create
+    @tweet = TweetForm.new(tweet_params)
     response = twitter_client.statuses_update({
-                                                status: tweet_params
+                                                status: tweet_params[:description]
                                               })
     JSON.pretty_generate(JSON.parse(response.body))
     redirect_to new_tweet_path, notice: 'ツイートを投稿しました'
@@ -25,6 +28,6 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params[:description]
+    params.require(:tweet_form).permit(:description)
   end
 end
