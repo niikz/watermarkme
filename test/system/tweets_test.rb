@@ -11,8 +11,8 @@ class TweetsTest < ApplicationSystemTestCase
     click_on 'ログイン'
   end
 
-  test 'GET /tweets' do
-    visit '/tweets'
+  test 'GET /tweets/new' do
+    visit new_tweet_url
     assert_selector 'h1', text: '画像を投稿する'
   end
 end

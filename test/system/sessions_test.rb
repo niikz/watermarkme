@@ -9,7 +9,7 @@ class SessionsTest < ApplicationSystemTestCase
     twitter_login_setup!
     visit root_url
     click_on 'ログイン'
-    visit tweets_url
+    visit new_tweet_url
     assert_text 'OmniAuth Twitterさん、こんにちは'
   end
 
@@ -17,13 +17,13 @@ class SessionsTest < ApplicationSystemTestCase
     twitter_login_setup!
     visit root_url
     click_on 'ログイン'
-    visit tweets_url
+    visit new_tweet_url
     click_on 'ログアウト'
     assert_text 'ログアウトしました'
   end
 
   test 'require logged in to visit the posts page' do
-    visit tweets_url
+    visit new_tweet_url
     assert_no_selector 'h1', text: '画像を投稿する'
     assert_text 'ログインしてください'
   end

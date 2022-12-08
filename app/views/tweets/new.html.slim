@@ -1,8 +1,12 @@
 div
   - if logged_in?
-    = link_to logout_path
-      | ログアウト
+    = link_to 'ログアウト', logout_path
     p
       | #{current_user.twitter_name}@#{current_user.twitter_id}さん、こんにちは
   h1.font-bold.text-4xl
     | 画像を投稿する
+  div
+    == render 'form', tweet_form: @tweet
+  - if flash[:notice]
+    p.my-4
+      = flash[:notice]

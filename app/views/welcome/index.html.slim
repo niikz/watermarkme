@@ -2,11 +2,9 @@ div
   h1.font-bold.text-4xl
     | WaterMark Me
   - if logged_in?
-    = link_to tweets_path
-      | 投稿する
+    = link_to '投稿する', new_tweet_path
   - else
-    = link_to '/auth/twitter', method: :post
-      | ログイン
+    = link_to 'ログイン', '/auth/twitter', method: :post
   - if flash[:notice]
     p.my-4
       = flash[:notice]

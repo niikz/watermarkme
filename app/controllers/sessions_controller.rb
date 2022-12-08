@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if user
       log_in(user)
       flash[:notice] = 'ログインしました'
-      redirect_to tweets_path
+      redirect_to new_tweet_path
     else
       flash[:notice] = '失敗しました'
       redirect_to root_path
