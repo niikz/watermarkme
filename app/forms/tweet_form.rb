@@ -3,7 +3,7 @@
 class TweetForm
   include ActiveModel::Model
 
-  attr_accessor :description
+  attr_accessor :description, :media
 
   def save(user)
     return false if invalid?
