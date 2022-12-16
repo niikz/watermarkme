@@ -20,6 +20,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet_form).permit(:description)
+    params.require(:tweet_form).permit(:description, :media)
   end
 end
