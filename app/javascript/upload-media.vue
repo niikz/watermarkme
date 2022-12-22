@@ -6,7 +6,7 @@
       ref="preview"
       type="file"
       @change="uploadMedia" />
-    <div id="result"></div>
+    <canvas id="canvas"></canvas>
   </div>
 </template>
 
@@ -14,6 +14,7 @@
 export default {
   data() {
     return {
+      uploadImgSrc: '',
       canvas: '',
       canvasWidth: null,
       canvasHeight: null
@@ -37,15 +38,31 @@ export default {
       {
         // ファイル読み込みに成功したときの処理
         reader.onload = () => {
-          // 画像の準備
-          const outputImg = new Image()
-          outputImg.src = reader.result
-          // ブラウザ上に表示
-          document.getElementById('result').appendChild(outputImg)
+          // Canvas上に表示する
+          this.uploadImgSrc = reader.result
+          this.canvasDraw()
         }
       }
       // ファイル読み込みを実行
       reader.readAsDataURL(fileData)
+    },
+    canvasDraw() {
+      // 画像の準備
+      const img = new Image()
+      img.src = this.uploadImgSrc
+      this.canvasWidth = img.width
+      this.canvasHeight = img.height
+
+      // Canvasの準備
+      this.canvas.width = this.canvasWidth
+      this.canvas.height = this.canvasHeight
+      const ctx = this.canvas.getContext('2d')
+
+      // Canvas上に画像を表示
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
+        return this.canvas
+      }
     }
   }
 }
