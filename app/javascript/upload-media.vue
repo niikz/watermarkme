@@ -9,6 +9,8 @@
     <div class="canvas_preview">
       <canvas id="canvas"></canvas>
     </div>
+    <input name="tweet_form[media]" type="hidden" :value="imageDataUrl" />
+    <button type="button" @click="save">投稿する</button>
   </div>
 </template>
 
@@ -16,6 +18,7 @@
 export default {
   data() {
     return {
+      imageDataUrl: '',
       uploadImgSrc: '',
       canvas: '',
       canvasWidth: null,
@@ -29,6 +32,16 @@ export default {
     this.canvas.height = 0
   },
   methods: {
+    save() {
+      const promise = new Promise(function (resolve) {
+        resolve()
+      })
+      function onFulfilled() {
+        const form = document.getElementById('form')
+        form.submit()
+      }
+      promise.then(onFulfilled)
+    },
     uploadMedia() {
       // ファイル情報を取得
       const fileData = this.$refs.preview.files[0]
@@ -68,6 +81,9 @@ export default {
       // Canvas上に画像を表示
       img.onload = () => {
         ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
+
+        // CanvasをDataURLに変換
+        this.imageDataUrl = this.canvas.toDataURL()
         return this.canvas
       }
     }
