@@ -6,7 +6,9 @@
       ref="preview"
       type="file"
       @change="uploadMedia" />
-    <canvas id="canvas"></canvas>
+    <div class="canvas_preview">
+      <canvas id="canvas"></canvas>
+    </div>
   </div>
 </template>
 
@@ -73,4 +75,13 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.canvas_preview {
+  width: 300px;
+  height: auto;
+}
+.canvas_preview canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>
