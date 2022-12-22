@@ -1,0 +1,90 @@
+<template>
+  <div>
+    <label for="tweet_form_media">Media</label>
+    <input
+      id="tweet_form_media"
+      ref="preview"
+      type="file"
+      @change="uploadMedia" />
+    <div class="canvas_preview">
+      <canvas id="canvas"></canvas>
+    </div>
+    <input name="tweet_form[media]" type="hidden" :value="imageDataUrl" />
+    <button type="button" @click="save">投稿する</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      imageDataUrl: '',
+      uploadImgSrc: '',
+      canvas: '',
+      canvasWidth: null,
+      canvasHeight: null
+    }
+  },
+  mounted() {
+    this.canvas = document.getElementById('canvas')
+    this.canvas.width = 0
+    this.canvas.height = 0
+  },
+  methods: {
+    save() {
+      const promise = new Promise(function (resolve) {
+        resolve()
+      })
+      function onFulfilled() {
+        const form = document.getElementById('form')
+        form.submit()
+      }
+      promise.then(onFulfilled)
+    },
+    uploadMedia() {
+      const fileData = this.$refs.preview.files[0]
+      if (!fileData.type.match('image.*')) {
+        alert('画像を選択してください')
+        return
+      }
+
+      const reader = new FileReader()
+      {
+        reader.onload = () => {
+          this.uploadImgSrc = reader.result
+          this.canvasDraw()
+        }
+      }
+      reader.readAsDataURL(fileData)
+    },
+    canvasDraw() {
+      const img = new Image()
+      img.src = this.uploadImgSrc
+      this.canvasWidth = img.width
+      this.canvasHeight = img.height
+
+      this.canvas.width = this.canvasWidth
+      this.canvas.height = this.canvasHeight
+      const ctx = this.canvas.getContext('2d')
+      ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
+
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
+        this.imageDataUrl = this.canvas.toDataURL()
+        return this.canvas
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+.canvas_preview {
+  width: 300px;
+  height: auto;
+}
+.canvas_preview canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>
