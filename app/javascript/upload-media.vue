@@ -60,6 +60,9 @@ export default {
       this.canvas.height = this.canvasHeight
       const ctx = this.canvas.getContext('2d')
 
+      // Canvas内の要素をクリアする
+      ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
+
       // Canvas上に画像を表示
       img.onload = () => {
         ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
