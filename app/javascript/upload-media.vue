@@ -23,6 +23,8 @@ export default {
   mounted() {
     // Canvasの準備
     this.canvas = document.getElementById('canvas')
+    this.canvas.width = 0
+    this.canvas.height = 0
   },
   methods: {
     uploadMedia() {
