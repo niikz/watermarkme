@@ -26,7 +26,6 @@ export default {
     }
   },
   mounted() {
-    // Canvasの準備
     this.canvas = document.getElementById('canvas')
     this.canvas.width = 0
     this.canvas.height = 0
@@ -43,46 +42,34 @@ export default {
       promise.then(onFulfilled)
     },
     uploadMedia() {
-      // ファイル情報を取得
       const fileData = this.$refs.preview.files[0]
       if (!fileData.type.match('image.*')) {
         alert('画像を選択してください')
         return
       }
 
-      // FileReaderオブジェクトを使ってファイル読み込み
       const reader = new FileReader()
       {
-        // ファイル読み込みに成功したときの処理
         reader.onload = () => {
-          // Canvas上に表示する
           this.uploadImgSrc = reader.result
           this.canvasDraw()
         }
       }
-      // ファイル読み込みを実行
       reader.readAsDataURL(fileData)
     },
     canvasDraw() {
-      // 画像の準備
       const img = new Image()
       img.src = this.uploadImgSrc
       this.canvasWidth = img.width
       this.canvasHeight = img.height
 
-      // Canvasの準備
       this.canvas.width = this.canvasWidth
       this.canvas.height = this.canvasHeight
       const ctx = this.canvas.getContext('2d')
-
-      // Canvas内の要素をクリアする
       ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
 
-      // Canvas上に画像を表示
       img.onload = () => {
         ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
-
-        // CanvasをDataURLに変換
         this.imageDataUrl = this.canvas.toDataURL()
         return this.canvas
       }
