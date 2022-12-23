@@ -8,8 +8,7 @@ class TweetForm
   def save(user)
     return false if invalid?
 
-    upload_image = File.open(media.tempfile.path, 'rb').read
-    media_response = twitter_client(user).media_upload({ 'media' => upload_image })
+    media_response = twitter_client(user).media_upload({ 'media' => decoded_content })
     media_id = JSON.parse(media_response.body)['media_id_string']
     response = twitter_client(user).statuses_update({
                                                       status: description,
@@ -28,5 +27,13 @@ class TweetForm
                              token: user.token,
                              token_secret: user.secret
                            })
+  end
+
+  def decoded_content
+    Base64.decode64(image_content)
+  end
+
+  def image_content
+    media.sub(%r/data:image\/.{3,},/, '')
   end
 end
