@@ -8,6 +8,7 @@ import Turbolinks from 'turbolinks'
 import * as ActiveStorage from '@rails/activestorage'
 import 'channels'
 import '../upload-media.js'
+import 'stylesheets/application.css'
 
 Rails.start()
 Turbolinks.start()
