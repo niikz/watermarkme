@@ -16,6 +16,9 @@
 
 <script>
 export default {
+  props: {
+    currentTwitterId: { type: String, default: '' }
+  },
   data() {
     return {
       imageDataUrl: '',
@@ -80,7 +83,11 @@ export default {
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       ctx.fillStyle = '#2D1B69'
-      ctx.fillText('Sample Text', this.canvasWidth / 2, this.canvasHeight / 2)
+      ctx.fillText(
+        this.currentTwitterId,
+        this.canvasWidth / 2,
+        this.canvasHeight / 2
+      )
     }
   }
 }
