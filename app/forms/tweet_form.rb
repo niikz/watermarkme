@@ -5,6 +5,8 @@ class TweetForm
 
   attr_accessor :description, :media
 
+  validates :media, presence: true
+
   def save(user)
     return false if invalid?
 
