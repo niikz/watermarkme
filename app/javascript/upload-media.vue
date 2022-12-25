@@ -1,16 +1,21 @@
 <template>
   <div>
-    <label for="tweet_form_media">Media</label>
-    <input
-      id="tweet_form_media"
-      ref="preview"
-      type="file"
-      @change="uploadMedia" />
-    <div class="canvas_preview">
-      <canvas id="canvas"></canvas>
+    <div class="form-control w-full max-w-x my-4">
+      <label for="tweet_form_media">Media</label>
+      <input
+        id="tweet_form_media"
+        ref="preview"
+        class="file-input file-input-bordered w-full max-w-x mt-1"
+        type="file"
+        @change="uploadMedia" />
+      <div class="canvas_preview">
+        <canvas id="canvas"></canvas>
+      </div>
     </div>
     <input name="tweet_form[media]" type="hidden" :value="imageDataUrl" />
-    <button type="button" @click="save">投稿する</button>
+    <button class="btn btn-primary" type="button" @click="save">
+      投稿する
+    </button>
   </div>
 </template>
 

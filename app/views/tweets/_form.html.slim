@@ -4,8 +4,7 @@
       - tweet_form.errors.full_messages.each do |message|
         li
           = message
-  div
+  .form-control.my-4
     = f.label :description
-    = f.text_area :description
-
+    = f.text_area :description, placeholder: 'ツイート本文を入力', class: 'textarea textarea-bordered h-24 mt-1'
   #js-upload-media(data-current-twitter-id="@#{current_user.twitter_id}")
