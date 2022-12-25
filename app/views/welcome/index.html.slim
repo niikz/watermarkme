@@ -1,10 +1,16 @@
-div
-  h1.font-bold.text-4xl
-    | WaterMark Me
-  - if logged_in?
-    = link_to '投稿する', new_tweet_path
-  - else
-    = link_to 'ログイン', '/auth/twitter', method: :post
-  - if flash[:notice]
-    p.my-4
-      = flash[:notice]
+.hero
+  .hero-content.text-center
+    .max-w-md
+      h1.font-bold.text-4xl
+        | WaterMark Me
+      p.py-6
+        | 画像にアカウント名の透かしを入れて投稿することができる
+        br
+        | 画像付きTweet投稿サービスです。
+      - if logged_in?
+        = link_to '投稿する', new_tweet_path, class: 'link link-hover'
+      - else
+        = link_to 'ログイン', '/auth/twitter', method: :post, class: 'link link-hover'
+      - if flash[:notice]
+        p.my-4
+          = flash[:notice]
