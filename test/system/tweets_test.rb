@@ -27,4 +27,11 @@ class TweetsTest < ApplicationSystemTestCase
     click_on '投稿する'
     assert_text "Media can't be blank"
   end
+
+  test 'show successful tweet posting flash message' do
+    file_path = Rails.root.join('test/fixtures/files/tweets/media/test_image.png')
+    attach_file('Media', file_path)
+    click_on '投稿する'
+    assert_text 'ツイートを投稿しました'
+  end
 end

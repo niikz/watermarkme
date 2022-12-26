@@ -3,11 +3,9 @@ div
     = link_to 'ログアウト', logout_path
     p
       | #{current_user.twitter_name}@#{current_user.twitter_id}さん、こんにちは
+  == render 'shared/flash'
   h1.font-bold.text-2xl.border-b-2
     span.pb-2.inline-block
       | 画像を投稿する
   div
     == render 'form', tweet_form: @tweet
-  - if flash[:notice]
-    p.my-4
-      = flash[:notice]

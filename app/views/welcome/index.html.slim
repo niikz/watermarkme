@@ -1,6 +1,7 @@
 .hero
   .hero-content.text-center
     .max-w-md
+      == render 'shared/flash'
       h1.font-bold.text-4xl
         | WaterMark Me
       p.py-6
@@ -11,6 +12,3 @@
         = link_to '投稿する', new_tweet_path, class: 'link link-hover'
       - else
         = link_to 'ログイン', '/auth/twitter', method: :post, class: 'link link-hover'
-      - if flash[:notice]
-        p.my-4
-          = flash[:notice]
