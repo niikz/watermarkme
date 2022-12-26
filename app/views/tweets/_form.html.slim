@@ -1,9 +1,5 @@
 = form_with model: tweet_form, url: create_tweet_path, local: true, id: 'form' do |f|
-  - if tweet_form.errors.any?
-    ul
-      - tweet_form.errors.full_messages.each do |message|
-        li
-          = message
+  == render 'shared/errors', object: tweet_form
   .form-control.my-4
     = f.label :description
     = f.text_area :description, placeholder: 'ツイート本文を入力', class: 'textarea textarea-bordered h-24 mt-1'
