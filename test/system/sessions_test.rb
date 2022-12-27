@@ -9,8 +9,7 @@ class SessionsTest < ApplicationSystemTestCase
     twitter_login_setup!
     visit root_url
     click_on 'ログイン'
-    visit new_tweet_url
-    assert_text 'OmniAuth Twitterさん、こんにちは'
+    assert_text 'ログインしました'
   end
 
   test 'logout' do
@@ -18,7 +17,8 @@ class SessionsTest < ApplicationSystemTestCase
     visit root_url
     click_on 'ログイン'
     visit new_tweet_url
-    click_on 'ログアウト'
+    find('.dropdown').click
+    find('.dropdown ul li a', text: 'ログアウト').click
     assert_text 'ログアウトしました'
   end
 

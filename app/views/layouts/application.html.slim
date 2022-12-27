@@ -10,7 +10,9 @@ html(data-theme="light")
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .flex.flex-col.min-h-screen
+      == render 'shared/header'
       .flex-grow
-        main.container.mx-auto.px-4
-          = yield
+        main.pt-6.pb-12
+          .container.mx-auto.px-4
+            = yield
       == render 'shared/footer'
