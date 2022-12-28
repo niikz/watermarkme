@@ -1,0 +1,17 @@
+header.bg-base-100.py-2
+  .container.mx-auto.px-4
+    .navbar.px-0
+      .flex-1
+        h1.text-3xl.font-bold
+          = link_to 'WaterMark Me', root_path
+      - if logged_in?
+        .flex-none
+          .dropdown.dropdown-end
+            label.btn.btn-ghost.btn-circle.avatar tabindex='0'
+              .w-10.rounded-full
+                img src="#{current_user.twitter_icon}" alt='Twitter profile photo'
+            ul.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52 tabindex='0'
+              li
+                = link_to "@#{current_user.twitter_id}", "https://twitter.com/#{current_user.twitter_id}", target: '_blank', rel: 'noopener'
+              li
+                = link_to 'ログアウト', logout_path
