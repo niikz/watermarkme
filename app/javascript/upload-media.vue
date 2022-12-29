@@ -8,8 +8,10 @@
         class="file-input file-input-bordered w-full max-w-x mt-1"
         type="file"
         @change="uploadMedia" />
-      <div class="canvas_preview">
-        <canvas id="canvas"></canvas>
+      <div class="border rounded-lg flex justify-center items-center h-36 mt-2">
+        <div class="canvas_preview max-w-full max-h-36">
+          <canvas id="canvas" class="max-w-full max-h-36"></canvas>
+        </div>
       </div>
     </div>
     <input name="tweet_form[media]" type="hidden" :value="imageDataUrl" />
@@ -32,11 +34,6 @@ export default {
       canvasWidth: null,
       canvasHeight: null
     }
-  },
-  mounted() {
-    this.canvas = document.getElementById('canvas')
-    this.canvas.width = 0
-    this.canvas.height = 0
   },
   methods: {
     save() {
@@ -71,6 +68,7 @@ export default {
       this.canvasWidth = img.width
       this.canvasHeight = img.height
 
+      this.canvas = document.getElementById('canvas')
       this.canvas.width = this.canvasWidth
       this.canvas.height = this.canvasHeight
       const ctx = this.canvas.getContext('2d')
@@ -98,13 +96,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.canvas_preview {
-  width: 300px;
-  height: auto;
-}
-.canvas_preview canvas {
-  max-width: 100%;
-  max-height: 100%;
-}
-</style>
+<style scoped></style>
