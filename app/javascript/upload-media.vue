@@ -125,7 +125,7 @@ export default {
       ctx.font = `bold ${fontSize}px Arial`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      ctx.fillStyle = '#2D1B69'
+      ctx.fillStyle = 'rgba(31, 41, 55, 0.3)'
       if (position === 'centerCenter') {
         ctx.fillText(
           this.currentTwitterId,
