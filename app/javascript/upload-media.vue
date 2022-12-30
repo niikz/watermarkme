@@ -15,7 +15,7 @@
       </div>
     </div>
     <input name="tweet_form[media]" type="hidden" :value="imageDataUrl" />
-    <button class="btn btn-primary" type="button" @click="save">
+    <button class="btn btn-neutral w-full" type="button" @click="save">
       投稿する
     </button>
   </div>
