@@ -1,15 +1,17 @@
 / slim-lint:disable LineLength
 
 .hero
-  .hero-content.text-center
+  .hero-content.text-center.p-0
     .max-w-md
       == render 'shared/flash'
-      h1.font-bold.text-4xl
-        | WaterMark Me
-      p.py-6
-        | 画像にアカウント名の透かしを入れて投稿することができる
+      h1.text-2xl
+        | 画像に透かしを入れてツイート
+      .border.rounded-lg.p-1.my-4
+        = image_tag 'description.png', alt: 'Service description'
+      p.my-6
+        | 画像にアカウント名の透かしを入れて
         br
-        | 画像付きTweet投稿サービスです。
+        | 投稿できるツイート投稿サービスです。
       .flex.justify-center.mt-6
         - if logged_in?
           = link_to '投稿する', new_tweet_path, class: 'bg-accent rounded-lg font-semibold tracking-wider text-white p-3 w-64 hover:bg-opacity-90'
@@ -19,3 +21,5 @@
               path d='M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z'
             span.inline-block.pl-2
               | Twitterでログイン
+      p.text-xs.my-2
+        | ご利用にはTwitterアカウントが必要です
