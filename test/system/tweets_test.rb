@@ -8,7 +8,7 @@ class TweetsTest < ApplicationSystemTestCase
   setup do
     twitter_login_setup!
     visit root_url
-    click_on 'ログイン'
+    click_on 'Twitterでログイン'
   end
 
   test 'GET /tweets/new' do
