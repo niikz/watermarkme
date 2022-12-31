@@ -9,6 +9,10 @@ module MetaTagsHelper
       description: '画像にアカウント名の透かしを入れて投稿できるツイート投稿サービス',
       keywords: %w[WatermarkMe Watermark Twitter],
       charset: 'utf-8',
+      icon: [
+        { href: image_url('favicon.svg') },
+        { href: image_url('icon.png'), rel: 'apple-touch-icon-precomposed', sizes: '180x180', type: 'image/png' }
+      ],
     }
   end
   # rubocop:enable Metrics/MethodLength
