@@ -13,6 +13,13 @@ module MetaTagsHelper
         { href: image_url('favicon.svg') },
         { href: image_url('icon.png'), rel: 'apple-touch-icon-precomposed', sizes: '180x180', type: 'image/png' }
       ],
+      og: {
+        title: 'Watermark Me',
+        type: 'website',
+        site_name: 'Watermark Me',
+        description: :description,
+        image: image_url('ogp.png')
+      },
     }
   end
   # rubocop:enable Metrics/MethodLength
