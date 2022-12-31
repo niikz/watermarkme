@@ -8,14 +8,14 @@ class SessionsTest < ApplicationSystemTestCase
   test 'login using twitter' do
     twitter_login_setup!
     visit root_url
-    click_on 'ログイン'
+    click_on 'Twitterでログイン'
     assert_text 'ログインしました'
   end
 
   test 'logout' do
     twitter_login_setup!
     visit root_url
-    click_on 'ログイン'
+    click_on 'Twitterでログイン'
     visit new_tweet_url
     find('.dropdown').click
     find('.dropdown ul li a', text: 'ログアウト').click
