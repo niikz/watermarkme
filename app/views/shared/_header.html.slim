@@ -3,7 +3,8 @@ header.bg-base-100.border-b
     .navbar.p-0
       .flex-1
         h1.text-3xl.font-bold
-          = link_to 'WaterMark Me', root_path
+          = link_to root_path do
+            = image_tag 'logo_text.svg', alt: 'Watermark Me', width: '200'
       - if logged_in?
         .flex-none
           .dropdown.dropdown-end
