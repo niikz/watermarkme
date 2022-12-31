@@ -20,6 +20,10 @@ module MetaTagsHelper
         description: :description,
         image: image_url('ogp.png')
       },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@watermarkme_dev'
+      }
     }
   end
   # rubocop:enable Metrics/MethodLength
