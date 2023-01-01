@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-control w-full max-w-x my-4">
-      <label for="tweet_form_media">Media</label>
+      <label for="tweet_form_media">画像をえらぶ</label>
       <input
         id="tweet_form_media"
         ref="preview"
