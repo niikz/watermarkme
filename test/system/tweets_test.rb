@@ -18,19 +18,19 @@ class TweetsTest < ApplicationSystemTestCase
 
   test 'show description too long error message' do
     description_text = 'a' * 141
-    fill_in 'Description', with: description_text
+    fill_in 'ツイート本文', with: description_text
     click_on '投稿する'
-    assert_text 'Description is too long (maximum is 140 characters)'
+    assert_text 'ツイート本文は140文字以内で入力してください'
   end
 
   test 'show media empty error message' do
     click_on '投稿する'
-    assert_text "Media can't be blank"
+    assert_text '画像をえらんでください'
   end
 
   test 'show successful tweet posting flash message' do
     file_path = Rails.root.join('test/fixtures/files/tweets/media/test_image.png')
-    attach_file('Media', file_path)
+    attach_file('画像をえらぶ', file_path)
     click_on '投稿する'
     assert_text 'ツイートを投稿しました'
   end

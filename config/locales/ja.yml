@@ -1,5 +1,14 @@
 ---
 ja:
+  activemodel:
+    format: "%{attribute}: %{message}"
+    attributes:
+      tweet_form:
+        description: 'ツイート本文'
+        media: '画像'
+    errors:
+      messages:
+        blank: をえらんでください
   activerecord:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
