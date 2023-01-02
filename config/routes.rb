@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/', to: 'welcome#index', as: 'welcome'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
+  get 'terms', to: 'welcome#terms', as: 'terms'
 
   resources :tweets, only: %i(new create)
   post '/tweets/new', to: 'tweets#create', as: 'create_tweet'
