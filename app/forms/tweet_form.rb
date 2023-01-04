@@ -25,8 +25,8 @@ class TweetForm
 
   def twitter_client(user)
     TwitterAPI::Client.new({
-                             consumer_key: ENV['TWITTER_API_KEY'],
-                             consumer_secret: ENV['TWITTER_API_SECRET'],
+                             consumer_key: Rails.application.credentials.dig(:twitter, :twitter_api_key),
+                             consumer_secret: Rails.application.credentials.dig(:twitter, :twitter_api_secret),
                              token: user.token,
                              token_secret: user.secret
                            })
