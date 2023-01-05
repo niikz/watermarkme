@@ -7,8 +7,8 @@ html(data-theme="light")
     = display_meta_tags(default_meta_tags)
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application'
+    = javascript_pack_tag 'application'
   body
     .flex.flex-col.min-h-screen
       == render 'shared/header'
