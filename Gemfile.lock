@@ -276,9 +276,6 @@ GEM
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     twitter_api (0.1.10)
       simple_oauth
     tzinfo (2.0.5)
@@ -341,7 +338,6 @@ DEPENDENCIES
   slim-rails
   slim_lint
   spring
-  turbolinks (~> 5)
   twitter_api
   tzinfo-data
   web-console (>= 4.1.0)
