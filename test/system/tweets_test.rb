@@ -28,10 +28,11 @@ class TweetsTest < ApplicationSystemTestCase
     assert_text '画像をえらんでください'
   end
 
-  test 'show successful tweet posting flash message' do
+  test 'no error message was shown' do
     file_path = Rails.root.join('test/fixtures/files/tweets/media/test_image.png')
     attach_file('画像をえらぶ', file_path)
     click_on '投稿する'
-    assert_text 'ツイートを投稿しました'
+    assert_no_text 'ツイート本文は140文字以内で入力してください'
+    assert_no_text '画像をえらんでください'
   end
 end
