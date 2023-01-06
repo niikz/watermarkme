@@ -12,13 +12,22 @@ class TweetForm
     return false if invalid?
 
     media_response = twitter_client(user).media_upload({ 'media' => decoded_content })
-    media_id = JSON.parse(media_response.body)['media_id_string']
+    if JSON.parse(media_response.body)['errors']
+      Rails.logger.info JSON.parse(media_response.body)
+      false
+    else
+      media_id = JSON.parse(media_response.body)['media_id_string']
+    end
     response = twitter_client(user).statuses_update({
                                                       status: description,
                                                       media_ids: media_id
                                                     })
-    JSON.pretty_generate(JSON.parse(response.body))
-    true
+    if JSON.parse(response.body)['errors']
+      Rails.logger.info JSON.parse(response.body)
+      false
+    else
+      true
+    end
   end
 
   private
