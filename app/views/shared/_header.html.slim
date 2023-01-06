@@ -10,7 +10,7 @@ header.bg-base-100.border-b
           .dropdown.dropdown-end
             label.btn.btn-ghost.btn-circle.avatar tabindex='0'
               .w-10.rounded-full
-                img src="#{current_user.twitter_icon}" alt='Twitter profile photo'
+                = image_tag current_user.twitter_icon, alt: 'Twitter profile photo'
             ul.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52 tabindex='0'
               li
                 = link_to "@#{current_user.twitter_id}", "https://twitter.com/#{current_user.twitter_id}", target: '_blank', rel: 'noopener'
