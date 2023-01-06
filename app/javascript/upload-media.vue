@@ -8,7 +8,8 @@
         class="file-input file-input-bordered w-full max-w-x mt-1"
         type="file"
         @change="uploadMedia" />
-      <div class="border rounded-lg flex justify-center items-center h-36 mt-2">
+      <div
+        class="box-content border rounded-lg flex justify-center items-center h-36 p-1 mt-2">
         <div class="canvas_preview max-w-full max-h-36">
           <canvas id="canvas" class="max-w-full max-h-36"></canvas>
         </div>
@@ -123,25 +124,26 @@ export default {
     addText(ctx, position) {
       const fontSize = 48
       ctx.font = `bold ${fontSize}px Arial`
-      ctx.textAlign = 'center'
-      ctx.textBaseline = 'middle'
       ctx.fillStyle = 'rgba(31, 41, 55, 0.3)'
       if (position === 'centerCenter') {
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
         ctx.fillText(
           this.currentTwitterId,
           this.canvasWidth / 2,
           this.canvasHeight / 2
         )
       } else if (position === 'bottomRight') {
+        ctx.textAlign = 'end'
         ctx.fillText(
           this.currentTwitterId,
-          this.canvasWidth - fontSize * 3,
+          this.canvasWidth - fontSize,
           this.canvasHeight - fontSize
         )
       } else {
         ctx.fillText(
           this.currentTwitterId,
-          fontSize * 3,
+          fontSize,
           this.canvasHeight - fontSize
         )
       }
