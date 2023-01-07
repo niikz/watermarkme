@@ -4,9 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from '@rails/ujs'
-import * as ActiveStorage from '@rails/activestorage'
 import '../upload-media.js'
 import 'stylesheets/application.css'
 
 Rails.start()
-ActiveStorage.start()

@@ -7,7 +7,6 @@
     "lint:prettier": "prettier 'app/javascript/**/*.{js,vue}' --check"
   },
   "dependencies": {
-    "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "@tailwindcss/typography": "^0.5.8",
