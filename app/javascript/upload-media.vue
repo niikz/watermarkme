@@ -64,7 +64,7 @@ export default {
     return {
       imageDataUrl: '',
       uploadImgSrc: '',
-      canvas: '',
+      ctx: '',
       canvasWidth: null,
       canvasHeight: null,
       position: 'bottomLeft'
@@ -87,6 +87,11 @@ export default {
     },
     uploadMedia() {
       const fileData = this.$refs.preview.files[0]
+      if (!fileData) {
+        this.uploadImgSrc = ''
+        this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
+      }
+
       if (!fileData.type.match('image.*')) {
         alert('画像を選択してください')
         return
@@ -105,43 +110,43 @@ export default {
     canvasDraw(position) {
       const img = new Image()
       img.src = this.uploadImgSrc
-      this.canvasWidth = img.width
-      this.canvasHeight = img.height
 
-      this.canvas = document.getElementById('canvas')
-      this.canvas.width = this.canvasWidth
-      this.canvas.height = this.canvasHeight
-      const ctx = this.canvas.getContext('2d')
-      ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
+      const canvas = document.getElementById('canvas')
+      this.ctx = canvas.getContext('2d')
+      this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
 
       img.onload = () => {
-        ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
-        this.addText(ctx, position)
-        this.imageDataUrl = this.canvas.toDataURL()
+        this.canvasWidth = img.width
+        this.canvasHeight = img.height
+        canvas.width = this.canvasWidth
+        canvas.height = this.canvasHeight
+        this.ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
+        this.addText(this.ctx, position)
+        this.imageDataUrl = canvas.toDataURL()
         return this.canvas
       }
     },
     addText(ctx, position) {
       const fontSize = 48
-      ctx.font = `bold ${fontSize}px Arial`
-      ctx.fillStyle = 'rgba(31, 41, 55, 0.3)'
+      this.ctx.font = `bold ${fontSize}px Arial`
+      this.ctx.fillStyle = 'rgba(31, 41, 55, 0.3)'
       if (position === 'centerCenter') {
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'middle'
-        ctx.fillText(
+        this.ctx.textAlign = 'center'
+        this.ctx.textBaseline = 'middle'
+        this.ctx.fillText(
           this.currentTwitterId,
           this.canvasWidth / 2,
           this.canvasHeight / 2
         )
       } else if (position === 'bottomRight') {
-        ctx.textAlign = 'end'
-        ctx.fillText(
+        this.ctx.textAlign = 'end'
+        this.ctx.fillText(
           this.currentTwitterId,
           this.canvasWidth - fontSize,
           this.canvasHeight - fontSize
         )
       } else {
-        ctx.fillText(
+        this.ctx.fillText(
           this.currentTwitterId,
           fontSize,
           this.canvasHeight - fontSize
