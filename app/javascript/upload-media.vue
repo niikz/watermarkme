@@ -105,16 +105,16 @@ export default {
     canvasDraw(position) {
       const img = new Image()
       img.src = this.uploadImgSrc
-      this.canvasWidth = img.width
-      this.canvasHeight = img.height
 
       this.canvas = document.getElementById('canvas')
-      this.canvas.width = this.canvasWidth
-      this.canvas.height = this.canvasHeight
       const ctx = this.canvas.getContext('2d')
       ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
 
       img.onload = () => {
+        this.canvasWidth = img.width
+        this.canvasHeight = img.height
+        this.canvas.width = this.canvasWidth
+        this.canvas.height = this.canvasHeight
         ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
         this.addText(ctx, position)
         this.imageDataUrl = this.canvas.toDataURL()
