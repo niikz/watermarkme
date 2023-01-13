@@ -5,7 +5,7 @@ class User < ApplicationRecord
     uid = auth_hash[:uid]
     twitter_id = auth_hash[:info][:nickname]
     twitter_name = auth_hash[:info][:name]
-    twitter_icon = auth_hash[:info][:image]
+    twitter_icon = auth_hash[:extra][:raw_info][:profile_image_url_https]
     twitter_token = auth_hash[:credentials][:token]
     twitter_secret = auth_hash[:credentials][:secret]
 
