@@ -1,13 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  uid: MyString
-  twitter_name: MyString
-  twitter_id: MyString
-  twitter_icon: MyString
-
-two:
-  uid: MyString
-  twitter_name: MyString
-  twitter_id: MyString
-  twitter_icon: MyString
+alice:
+  uid: '18651126'
+  twitter_name: 'alice'
+  twitter_id: 'alice world'
+  twitter_icon: 'http://example.com/alice.jpg'
+  token: 'token'
+  secret: 'secret'
