@@ -116,14 +116,29 @@ export default {
       this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
 
       img.onload = () => {
-        this.canvasWidth = img.width
-        this.canvasHeight = img.height
+        const maxWidth = 1280
+        const maxHeight = 640
+        if (img.width > maxWidth || img.height > maxHeight) {
+          this.resizeCanvas(img.width, img.height, maxWidth, maxHeight)
+        } else {
+          this.canvasWidth = img.width
+          this.canvasHeight = img.height
+        }
         canvas.width = this.canvasWidth
         canvas.height = this.canvasHeight
         this.ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight)
         this.addText(this.ctx, position)
         this.imageDataUrl = canvas.toDataURL()
         return this.canvas
+      }
+    },
+    resizeCanvas(imgWidth, imgHeight, maxWidth, maxHeight) {
+      if (imgWidth > imgHeight * 2) {
+        this.canvasHeight = (maxWidth * imgHeight) / imgWidth
+        this.canvasWidth = (this.canvasHeight * imgWidth) / imgHeight
+      } else {
+        this.canvasWidth = (maxHeight * imgWidth) / imgHeight
+        this.canvasHeight = (this.canvasWidth * imgHeight) / imgWidth
       }
     },
     addText(ctx, position) {
