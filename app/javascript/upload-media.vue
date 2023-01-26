@@ -142,7 +142,7 @@ export default {
       }
     },
     addText(ctx, position) {
-      const fontSize = 48
+      const fontSize = this.canvasWidth / 20
       this.ctx.font = `bold ${fontSize}px Arial`
       this.ctx.fillStyle = 'rgba(31, 41, 55, 0.3)'
       if (position === 'centerCenter') {
