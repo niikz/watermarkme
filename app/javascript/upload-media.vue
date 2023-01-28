@@ -9,9 +9,9 @@
         type="file"
         @change="uploadMedia" />
       <div
-        class="box-content border rounded-lg flex justify-center items-center h-36 p-1 mt-2">
-        <div class="canvas_preview max-w-full max-h-36">
-          <canvas id="canvas" class="max-w-full max-h-36"></canvas>
+        class="canvas_preview_block box-content border rounded-lg flex justify-center items-center p-1 mt-2">
+        <div class="canvas_preview max-w-full">
+          <canvas id="canvas" class="max-w-full"></canvas>
         </div>
       </div>
     </div>
@@ -172,4 +172,12 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.canvas_preview_block {
+  height: 30rem;
+}
+.canvas_preview,
+#canvas {
+  max-height: 30rem;
+}
+</style>
