@@ -145,10 +145,16 @@ export default {
       const fontSize = this.canvasWidth / 20
       this.ctx.font = `bold ${fontSize}px Arial`
       this.ctx.fillStyle = 'rgba(31, 41, 55, 0.3)'
+      this.ctx.strokeStyle = 'rgba(240, 258, 255, 0.7)'
       if (position === 'centerCenter') {
         this.ctx.textAlign = 'center'
         this.ctx.textBaseline = 'middle'
         this.ctx.fillText(
+          this.currentTwitterId,
+          this.canvasWidth / 2,
+          this.canvasHeight / 2
+        )
+        this.ctx.strokeText(
           this.currentTwitterId,
           this.canvasWidth / 2,
           this.canvasHeight / 2
@@ -160,8 +166,18 @@ export default {
           this.canvasWidth - fontSize,
           this.canvasHeight - fontSize
         )
+        this.ctx.strokeText(
+          this.currentTwitterId,
+          this.canvasWidth - fontSize,
+          this.canvasHeight - fontSize
+        )
       } else {
         this.ctx.fillText(
+          this.currentTwitterId,
+          fontSize,
+          this.canvasHeight - fontSize
+        )
+        this.ctx.strokeText(
           this.currentTwitterId,
           fontSize,
           this.canvasHeight - fontSize
